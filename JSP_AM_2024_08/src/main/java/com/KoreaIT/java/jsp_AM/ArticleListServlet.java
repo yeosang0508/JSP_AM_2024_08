@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@WebServlet("/Article/list")
+@WebServlet("/article/list")
 public class ArticleListServlet extends HttpServlet {
 	
   
@@ -30,7 +30,7 @@ public class ArticleListServlet extends HttpServlet {
 		
 		response.getWriter().append("123");
 		
-		String url = "jdbc:mysql://127.0.0.1:3306/AM_JDBC_2024_07?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";
+		String url = "jdbc:mysql://127.0.0.1:3306/24_08_JAM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";
 
 		String user = "root";
 		String password = "";
@@ -44,11 +44,13 @@ public class ArticleListServlet extends HttpServlet {
 				
 				DBUtil dbUtil = new DBUtil(request, response);
 				
-				String sql = "SELECT * FROM article";
+				String sql = "SELECT * FROM article ORDER BY id DESC";
 				
 				List<Map<String, Object>> articleRows = dbUtil.selectRows(conn, sql);
 					
-				response.getWriter().append(articleRows.toString());
+				request.setAttribute("articleRows", articleRows);
+				
+				request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 		
 		}catch(SQLException e) {
 			System.out.println("에러 1 : " + e);
