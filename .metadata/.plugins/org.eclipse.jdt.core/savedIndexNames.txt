@@ -1,7 +1,6 @@
 INDEX VERSION 1.134+C:\work_ssa\sts-4.24.0.RELEASE-workspace-1\.metadata\.plugins\org.eclipse.jdt.core
 2964920765.index
 1279927006.index
-828764808.index
 4272425814.index
 858433964.index
 3302323321.index

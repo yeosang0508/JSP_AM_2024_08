@@ -18,7 +18,7 @@
 	
 		<h2>게시물 목록</h2>
 		
-		<a href="../home/main">메인 페이지</a>
+		<a href="../home/main">메인 페이지로</a>
 		
 	<table style="border-collapse: collapse; border-color: green;"
 		border="1px">

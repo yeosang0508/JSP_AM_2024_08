@@ -18,18 +18,34 @@
 	
 		<h2>게시물 목록</h2>
 		
-		<ul>
-		<%
-		for(Map<String, Object> articleRow : articleRows){
-		%>	
+		<a href="../home/main">메인 페이지</a>
 		
-		<li><%= articleRow.get("id") %>번, <%=articleRow.get("regDate") %>,<%=articleRow.get("title") %>, <%=articleRow.get("body") %></li>
-			
-		<%	
-		}
-		%>
-		
-		
-		</ul>
+	<table style="border-collapse: collapse; border-color: green;"
+		border="1px">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>날짜</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+			for (Map<String, Object> articleRow : articleRows) {
+			%>
+			<tr style="text-align: center;">
+				<td><%=articleRow.get("id")%></td>
+				<td><%=articleRow.get("regDate")%></td>
+				<td><%=articleRow.get("title")%></td>
+				<td><%=articleRow.get("body")%></td>
+				<td><a href="doDelete?id=<%=articleRow.get("id")%>">del</a></td>
+			</tr>
+			<%
+			}
+			%>
+		</tbody>
+	</table>
 </body>
 </html>
