@@ -1,36 +1,34 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-    <% 
-    List<Map<String, Object>> articleRows = (List<Map<String, Object>>)request.getAttribute("articleRows");
-    int cPage = (int) request.getAttribute("page");
-    int totalPage = (int) request.getAttribute("totalPage");
-    int totalCnt = (int) request.getAttribute("totalCnt");
-    
-    %>
+	pageEncoding="UTF-8"%>
+
+<%
+List<Map<String, Object>> articleRows = (List<Map<String, Object>>) request.getAttribute("articleRows");
+
+int cPage = (int) request.getAttribute("page");
+int totalPage = (int) request.getAttribute("totalPage");
+int totalCnt = (int) request.getAttribute("totalCnt");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시물 리스트</title>
+<title>게시물 목록</title>
 </head>
 <body>
-	
-		<h2>게시물 목록</h2>
-		
-		<a href="../home/main">메인 페이지</a>
-		<a href="write">글쓰기</a>
-		
-		<div>
+
+	<h2>게시물 목록</h2>
+
+	<a href="../home/main">메인 페이지로 </a>
+	<div>
 		총 게시글 수 :
 		<%=totalCnt%>
 		개
 	</div>
-		
+
 	<table style="border-collapse: collapse; border-color: green;"
 		border="1px">
 		<thead>
@@ -39,7 +37,6 @@
 				<th>날짜</th>
 				<th>제목</th>
 				<th>내용</th>
-				<th>수정</th>
 				<th>삭제</th>
 			</tr>
 		</thead>
@@ -52,7 +49,6 @@
 				<td><%=articleRow.get("regDate")%></td>
 				<td><%=articleRow.get("title")%></td>
 				<td><%=articleRow.get("body")%></td>
-				<td><a href="modify?id=<%=articleRow.get("id") %>">수정</a></td>
 				<td><a href="doDelete?id=<%=articleRow.get("id")%>">del</a></td>
 			</tr>
 			<%
@@ -60,16 +56,17 @@
 			%>
 		</tbody>
 	</table>
-	
-	
+
 	<style type="text/css">
 .page {
 	font-size: 1.4rem;
 }
+
 .page>a {
 	color: black;
 	text-decoration: none;
 }
+
 .page>a.cPage {
 	color: red;
 	text-decoration: underline;
@@ -85,7 +82,7 @@
 		}
 		%>
 	</div>
-	
-	
+
+
 </body>
 </html>

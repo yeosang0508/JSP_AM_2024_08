@@ -44,7 +44,6 @@ public class ArticleDetailServlet extends HttpServlet {
 
 			int id = Integer.parseInt(request.getParameter("id"));
 
-
 			SecSql sql = SecSql.from("SELECT *");
 			sql.append("FROM article");
 			sql.append("WHERE id = ?", id);
@@ -67,8 +66,5 @@ public class ArticleDetailServlet extends HttpServlet {
 		}
 
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+
 }

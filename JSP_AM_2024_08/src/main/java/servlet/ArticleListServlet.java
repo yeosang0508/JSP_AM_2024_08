@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import util.DBUtil;
 import util.SecSql;
 
@@ -31,8 +32,6 @@ public class ArticleListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.getWriter().append("123");
-
 		String url = "jdbc:mysql://127.0.0.1:3306/24_08_JAM?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul";
 
 		String user = "root";
@@ -42,16 +41,16 @@ public class ArticleListServlet extends HttpServlet {
 
 		try {
 			conn = DriverManager.getConnection(url, user, password);
-			
+
 			int page = 1;
-			
-			if(request.getParameter("page") != null && request.getParameter("page").length() != 0) {
+
+			if (request.getParameter("page") != null && request.getParameter("page").length() != 0) {
 				page = Integer.parseInt(request.getParameter("page"));
 			}
 
 			int itemsInAPage = 10;
 			int limitFrom = (page - 1) * itemsInAPage;
-			
+
 			SecSql sql = SecSql.from("SELECT COUNT(*) AS cnt");
 			sql.append("FROM article");
 
@@ -65,7 +64,6 @@ public class ArticleListServlet extends HttpServlet {
 
 			List<Map<String, Object>> articleRows = DBUtil.selectRows(conn, sql);
 
-			
 			request.setAttribute("page", page);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("totalCnt", totalCnt);
@@ -85,8 +83,5 @@ public class ArticleListServlet extends HttpServlet {
 		}
 
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+
 }
