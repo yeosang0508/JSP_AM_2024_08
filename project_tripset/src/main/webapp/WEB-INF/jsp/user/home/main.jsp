@@ -381,26 +381,41 @@ html, body {
 
 	<!-- 팝업 -->
 	<div class="login-popup fixed inset-0 flex items-center justify-center hidden z-50">
-		<div class="popup-container w-[550px] h-[550px] p-8 bg-white rounded-lg shadow-lg relative">
-			<div class="popup-header flex justify-end">
-				<button class="close-popup text-3xl font-bold">×</button>
-			</div>
-			<div class="popup-body mt-4">
-				<h2 class="text-center font-bold text-lg">Please Fill out form to Register!</h2>
-				<div class="w-full mt-6">
-					<form class="input-container mb-4" action="../member/login" method="get" name="login">
-						<label class="block text-left font-medium text-base mb-1">ID:</label>
-						<input type="text" name="userId" class="input-field w-full h-[47px] px-4 border rounded-md" />
-						<label class="block text-left font-medium text-base mb-1">Password:</label>
-						<input type="password" name="userPw" class="input-field w-full h-[47px] px-4 border rounded-md" />
-						<input type="submit" class="popup-login-button w-full h-[47px] bg-[#4D9FFF] text-white font-semibold rounded-md"
-							value="로그인" />
-					</form>
+		<table class="popup-container w-[550px] h-[550px] p-8 bg-white rounded-lg shadow-lg relative">
+			<thead>
+				<tr>
+					<th class="popup-header flex justify-end">
+						<button class="close-popup text-3xl font-bold">×</button>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div class="popup-body mt-4">
+							<h2 class="text-center font-bold text-lg">Please Fill out form to Register!</h2>
+							<div class="w-full mt-6">
+								<form class="input-container mb-4" action="../member/doLogin" method="POST" name="login">
+				
+									<label class="block text-left font-medium text-base mb-1">ID:</label>
+									<input type="text" name="loginId" class="input-field w-full h-[47px] px-4 border rounded-md"
+										placeholder="아이디를 입력해주세요." />
 
-					<a class="signup-message mt-4 text-left text-gray-500 text-sm" href="../member/join">회원가입이 필요한가요?</a>
-				</div>
-			</div>
-		</div>
+									<label class="block text-left font-medium text-base mb-1">Password:</label>
+									<input type="password" name="loginPw" class="input-field w-full h-[47px] px-4 border rounded-md"
+										placeholder="비밀번호를 입력해주세요." />
+
+									<button class="popup-login-button w-full h-[47px] bg-[#4D9FFF] text-white font-semibold rounded-md">로그인</button>
+								</form>
+
+
+								<a class="signup-message mt-4 text-left text-gray-500 text-sm" href="../member/join">회원가입이 필요한가요?</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<!-- 주요기능 -->
